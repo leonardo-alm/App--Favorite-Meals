@@ -147,11 +147,6 @@ body{
     z-index: 1;
 }
 
-.heart-icon {
-    color: #fd4d3f;
-    margin-right: 5px;
-}
-
 .spinner {
     display: block;
     margin: 0 auto;

@@ -17,7 +17,6 @@ export const SearchTerm = () => {
 
     return (
         <div id="search-container">
-
             <input
                 id="search"
                 type="text"

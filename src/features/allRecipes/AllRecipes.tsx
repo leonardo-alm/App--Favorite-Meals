@@ -6,8 +6,6 @@ import FavoriteButton from "../../components/FavoriteButton";
 import Recipe from "../../components/Recipe";
 import { IRecipe } from '../../interfaces/IRecipe';
 
-const favoriteIconURL = '';
-
 export const AllRecipes = () => {
     const allRecipes = useSelector(selectFilteredAllRecipes);
     const dispatch = useDispatch();
@@ -15,10 +13,10 @@ export const AllRecipes = () => {
     const onFirstRender = () => {
         dispatch(loadData());
     }
-    
+
     useEffect(onFirstRender, []);
 
-    const onAddRecipeHandler = (recipe : IRecipe) => {
+    const onAddRecipeHandler = (recipe: IRecipe) => {
         dispatch(addRecipe(recipe));
     };
 
@@ -26,10 +24,7 @@ export const AllRecipes = () => {
         <div className="recipes-container">
             {allRecipes.map((recipe: IRecipe) => (
                 <Recipe recipe={recipe} key={recipe.id}>
-                    <FavoriteButton
-                        onClickHandler={() => onAddRecipeHandler(recipe)}
-                        icon={favoriteIconURL}
-                    >
+                    <FavoriteButton onClickHandler={() => onAddRecipeHandler(recipe)}>
                         ❤️ Add to Favorites
                     </FavoriteButton>
                 </Recipe>

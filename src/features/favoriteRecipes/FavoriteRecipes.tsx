@@ -4,8 +4,6 @@ import { IRecipe } from '../../interfaces/IRecipe';
 import FavoriteButton from "../../components/FavoriteButton";
 import Recipe from "../../components/Recipe";
 
-const unfavoriteIconUrl = '';
-
 export const FavoriteRecipes = () => {
     const favoriteRecipes = useSelector(selectFilteredFavoriteRecipes);
     const dispatch = useDispatch();
@@ -16,20 +14,13 @@ export const FavoriteRecipes = () => {
 
     return (
         <div className="recipes-container">
-            {favoriteRecipes.map(createRecipeComponent)}
+            {favoriteRecipes.map((recipe: IRecipe) => (
+                <Recipe recipe={recipe} key={recipe.id}>
+                    <FavoriteButton onClickHandler={() => onRemoveRecipeHandler(recipe)}>
+                        🖤 Remove Favorite
+                    </FavoriteButton>
+                </Recipe>
+            ))}
         </div>
     );
-
-    function createRecipeComponent(recipe: IRecipe) {
-        return (
-            <Recipe recipe={recipe} key={recipe.id}>
-                <FavoriteButton
-                    onClickHandler={() => onRemoveRecipeHandler(recipe)}
-                    icon={unfavoriteIconUrl}
-                >
-                    🖤 Remove Favorite
-                </FavoriteButton>
-            </Recipe>
-        )
-    }
 };
